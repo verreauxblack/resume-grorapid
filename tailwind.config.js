@@ -1,9 +1,7 @@
 const colors = require('tailwindcss/colors')
 
 module.exports = {
-  purge: [
-    './*.html'
-  ],
+  purge: [],
   presets: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
@@ -266,7 +264,6 @@ module.exports = {
         '"Courier New"',
         'monospace',
       ],
-      mont: ['Montserrat', 'sans-serif'],
     },
     fontSize: {
       xs: ['0.75rem', { lineHeight: '1rem' }],
