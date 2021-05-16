@@ -126,7 +126,9 @@
             <div class=" md:w-2/5 mt-8">
                 <h2 class=" text-2xl my-2 md:-mt-6 md:text-4xl font-medium text-gray5">Contact Me</h2>
                 <p class="mt-8 md:mt-3 text-xs md:text-base text-gray5 md:leading-6 ">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Diam dolor semper ipsum adipiscing vestibulum.</p>
-                <form  class=" flex justify-around items-center flex-col space-y-5 w-full  mt-6">
+                <form id="contact-form"  action="https://formcarry.com/s/cfduv5fSY-7" method="POST" accept-charset="UTF-8" 
+                    class=" flex justify-around items-center flex-col space-y-5 w-full  mt-6"
+                >
                     <input type="text" name="name" id="name" placeholder="Your Name" required
                        class="text-base w-full h-12 bg-transparent border-2 border-solid border-gray5 px-5 text-gray5 focus:outline-none"
                     >
@@ -139,7 +141,8 @@
                     <textarea name="message" id="message" placeholder="Message" rows="5" cols="100" required
                        class="text-base w-full pt-4 h-24 bg-transparent border-2 border-solid border-gray5 px-5 text-gray5 focus:outline-none"
                     ></textarea>
-                    <input type="submit" value="SUBMIT" onsubmit="handleSubmit()"
+                    <input type="hidden" name="_gotcha">
+                    <input type="submit" value="SUBMIT"
                     class="text-base font-bold w-full h-12 bg-gray5 text-DarkBlack border-2 border-solid border-gray5 px-5 focus:outline-none"
                     >
                 </form>
@@ -180,10 +183,26 @@
     
 
     <!-- javascript started -->
+    <script src="https://carrier.formcarry.com/js/v1.js"></script>
     <script>
-        const handleSubmit = (e) => {
-            e.preventDefault();
-        }
+        formcarry({
+            form: "cfduv5fSY-7",
+            element: "#contact-form",
+            extraData: {
+            screenSize: `${window.screen.width}x${window.screen.height}`,
+            language: window.navigator.language,
+            },
+            onSuccess: function(response){
+            alert("Thank you for your submittion")
+            document.getElementById('name').value='';
+            document.getElementById('email').value='';
+            document.getElementById('message').value='';
+            document.getElementById('subject').value='';
+            },
+            onError: function(error){
+            alert(error)
+            }
+        });
     </script>
 </body>
 </html>
